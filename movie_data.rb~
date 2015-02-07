@@ -1,60 +1,31 @@
+require './DataStore'
 class MovieData
-	def initialize
-		@DB = Sequel.sqlite # memory database
-		create_tables
-	end
+	def initialize(file_path, data_file=nil)
+		@file_path = file_path
+		@data_file = (data_file) ? data_file.to_s : 'u.data'
 
-	def create_tables
-		@users = make_users_table
-		@movies = make_movies_table
-		@ratings = make_ratings_table
-	end
-
-	def make_users_table
-		@DB.create_table :users do
-			primary_key :id
-			Integer :age
-			String :gender
-			String :occupation
-			String :zip_code
-		end
-
-		@DB.[:users]
-	end
-
-	def make_movies_table
-		@DB.create_table :movies do
-			primary_key :id
-			String :title
-			Date :released
-			Boolean :action
-			Boolean :adventure
-			Boolean :animation
-			Boolean :childrens
-			Boolean :comedy
-			Boolean :crime
-			Boolean :documentary
-			Boolean :fantasy
-			Boolean :noir
-			Boolean :horror
-			Boolean :musical
-			Boolean :mystery
-			Boolean :romance
-			Boolean :sci_fi
-			Boolean :thriller
-			Boolean :war
-			Boolean :western
-		end
-
-		@DB[:movies]
-	end
-
-	def make_ratings_table
-		@DB.create_table :ratings do
-			Integer :user_id
-			Integer :movie_id
-			Float :rating
-		end
-	end
+		DS = DataStore.new
+		@users = DS.users
+		@movies = DS.movies
+		@ratings = DS.ratings
 		
+		load_data
+	end
+
+	def load_data
+
+	end
+
+	private
+	def add_user(params)
+		@users.insert(id: params[:id], age: params[:age], occupation: params[:occupation])
+	end
+
+	def add_movie(params)
+
+	end
+
+	def add_rating(user_id, mov_id, rating)
+		@rating.insert(user_id: user_id, movie_id: mov_id, rating: rating.to_f)
+	end
 end
