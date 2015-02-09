@@ -3,8 +3,12 @@ require_relative 'data_loader'
 require_relative 'movie_test'
 require_relative 'prediction'
 
+##
+# Performs analysis on loaded data
 class MovieData
 
+	##
+	# Loads data from data_file_path/data_file_name
 	def initialize(data_file_path, data_file_name = 'u.data')
 		@data_file_path = data_file_path
 		@training_file_name, @test_file_name = training_and_test_file_names(data_file_name)
@@ -15,18 +19,29 @@ class MovieData
 		@all_users = data.all_users
 	end
 
+	##
+	# Returns the rating that the user associated with user_id
+	# gave to the movie associated with movie_id
 	def rating(user_id, movie_id)
 		@all_users[user_id].rating movie_id
 	end
 
+	## 
+	# Returns an array of movie ids seen by the users associated with user_id
 	def movies(user_id)
 		@all_users[user_id].movies
 	end
 
+	##
+	# Returns an array of user ids that have watched the movie associated with movie_id
 	def viewers(movie_id)
 		@all_movies[movie_id].viewers
 	end
 
+	##
+	# Returns an estimated rating between 1 and 5 for how
+	# much the user designated by user_id like the movie
+	# designated by movie_id
 	def predict(user_id, movie_id)
 		user_genre_ratings = genre_ratings(@all_users[user_id].ratings)
 		movie_genres = @all_movies[movie_id].genres
@@ -40,6 +55,10 @@ class MovieData
 		return (matched_genre_count == 0) ? 1 : (rating.to_f / matched_genre_count)
 	end
 
+	##
+	# Returns a MovieTest object
+	#
+	# Either goes through all records in the test data or number_of_records records
 	def run_test(number_of_records = nil)
 		test_file_exists?
 		movie_test = MovieTest.new
@@ -56,6 +75,8 @@ class MovieData
 	end
 
 	private
+	##
+	# Returns array of names for training file and test file
 	def training_and_test_file_names(data_file_name)
 		if data_file_name == 'u.data'
 			['u.data', nil]
@@ -64,11 +85,16 @@ class MovieData
 		end
 	end
 	
+	##
+	# Load data to analyze from the source files
 	def get_data
 		data_hash = {path: @data_file_path, training: @training_file_name, testing: @testing_file_name}
 		DataLoader.new(data_hash)
 	end
 
+	##
+	# Determine if the test file exists.
+	# If not, terminate the program.
 	def test_file_exists?
 		if @test_file_name.nil?
 			puts "No test data given to run. Exiting."
@@ -76,6 +102,10 @@ class MovieData
 		end
 	end
 
+	##
+	# Returns a hash of genres to the average rating for the genre.
+	#
+	# movies_to_rating should be a hash of movie ids to ratings
 	def genre_ratings(movies_to_rating)
 		genre_rating_hash = Hash.new {|hash, key| hash[key] = []} 
 

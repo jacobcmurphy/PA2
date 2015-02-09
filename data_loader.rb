@@ -2,8 +2,16 @@ require_relative 'user'
 require_relative 'movie'
 require 'csv'
 
+##
+# Used for loading movie data and user/movie ratings
+# Movie data should be stored in a a file called 'u.item'
 class DataLoader
+	##
+	# Name of the file containing the movie data
 	MOVIE_DATA_FILE = 'u.item'
+
+	##
+	# List of 19 different genres
 	GENRE_LIST = ['unknown', 'action', 'adventure', 
 			   'animation', 'childrens', 'comedy', 'crime',
 			   'documentary', 'drama', 'fantasy', 'noir', 
@@ -14,6 +22,9 @@ class DataLoader
 
 	attr_reader :all_users, :all_movies
 
+	##
+	# Takes a hash with the keys :path, :training, and :testing
+	# Loads all movies and user data upon creation
 	def initialize(data_location_hash)
 		@data_file_path = data_location_hash[:path]
 		@training_file_name = data_location_hash[:training]
@@ -28,6 +39,8 @@ class DataLoader
 
 	private
 
+	##
+	# Load rating data from a CSV. Each row of the CSV holds user id, movie id, rating, and timestamp
 	def load_training_data
 		CSV.foreach(@data_file_path+'/'+@training_file_name, {col_sep: "\t", encoding: 'windows-1251:utf-8'}) do |row|
 			user_id, movie_id, rating, timestamp = row
@@ -40,6 +53,8 @@ class DataLoader
 		end
 	end
 
+	##
+	# Loads movie data including movie id, title, and movies' genres
 	def load_movie_data
 		full_file_path = @data_file_path + '/' + MOVIE_DATA_FILE
 		CSV.foreach(full_file_path, {col_sep: "|", encoding: 'windows-1251:utf-8'}) do |row|
@@ -51,11 +66,13 @@ class DataLoader
 	end
 
 
+	##
+	# Determines if an object exists in the hash with the given id, if not, it creates
+	# the object and stores it in the given hash
 	# obj_type should only be User or Movie
 	def get_obj (class_type, obj_hash, obj_id)
 		obj_hash[obj_id] ||= class_type.new(obj_id)
 		obj_hash[obj_id]
 	end
-
 
 end
