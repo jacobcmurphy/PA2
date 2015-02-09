@@ -3,6 +3,4 @@
 
 Movie Prediction algorithm in Ruby
 
-Make sure to user the OO_based branch.
-
 Prediction based on genres of a movie and how a user has rated movies of those genres before.
