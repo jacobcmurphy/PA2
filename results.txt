@@ -1,0 +1,119 @@
+For set u1 
+
+Testing with all records:
+mean:	 0.849998536151759
+rms:	 1.0762649936536646
+stddev:	 0.6602049822858911
+
+Average number of milliseconds per prediction: 0.18501708918.
+
+Testing with 100 records:
+mean:	 0.8809753366459133
+rms:	 1.0682299253070722
+stddev:	 0.6072249131506027
+
+Average number of milliseconds per prediction: 1.00208277.
+
+*********************************
+For set u2 
+
+Testing with all records:
+mean:	 0.8330223122833098
+rms:	 1.0503522329713193
+stddev:	 0.6397922375672839
+
+Average number of milliseconds per prediction: 0.23369231861.
+
+Testing with 100 records:
+mean:	 0.8907901065488223
+rms:	 1.19231575759258
+stddev:	 0.7965670945257189
+
+Average number of milliseconds per prediction: 1.1339086900000002.
+
+*********************************
+For set u3 
+
+Testing with all records:
+mean:	 0.8196651986734363
+rms:	 1.0359557692653938
+stddev:	 0.6335403591147266
+
+Average number of milliseconds per prediction: 0.23647548997.
+
+Testing with 100 records:
+mean:	 0.9442280872718121
+rms:	 1.1249598479544332
+stddev:	 0.6146413413524182
+
+Average number of milliseconds per prediction: 1.3482635600000001.
+
+*********************************
+For set u4 
+
+Testing with all records:
+mean:	 0.825556716507396
+rms:	 1.0408607415689812
+stddev:	 0.6339300312599889
+
+Average number of milliseconds per prediction: 0.22587649153000003.
+
+Testing with 100 records:
+mean:	 0.9427379398403785
+rms:	 1.1400141867886617
+stddev:	 0.6442593814988403
+
+Average number of milliseconds per prediction: 1.9634977599999999.
+
+*********************************
+For set u5 
+
+Testing with all records:
+mean:	 0.8328217128230304
+rms:	 1.0497349658427433
+stddev:	 0.639039835815404
+
+Average number of milliseconds per prediction: 0.21143035975.
+
+Testing with 100 records:
+mean:	 0.8499969874449994
+rms:	 1.0990603923104625
+stddev:	 0.7002801761505475
+
+Average number of milliseconds per prediction: 1.8883523.
+
+*********************************
+For set ua 
+
+Testing with all records:
+mean:	 0.8436050563224892
+rms:	 1.0784341289599215
+stddev:	 0.6718620005651803
+
+Average number of milliseconds per prediction: 0.0791743954.
+
+Testing with 100 records:
+mean:	 0.8258888339670382
+rms:	 1.0613925590884463
+stddev:	 0.6700724758490892
+
+Average number of milliseconds per prediction: 1.0985331600000001.
+
+*********************************
+For set ub 
+
+Testing with all records:
+mean:	 0.8572477826613248
+rms:	 1.0898750182904866
+stddev:	 0.6730541085130871
+
+Average number of milliseconds per prediction: 0.07690637078.
+
+Testing with 100 records:
+mean:	 0.849254647921654
+rms:	 1.0434731302358926
+stddev:	 0.6093880246898444
+
+Average number of milliseconds per prediction: 1.09595891.
+
+*********************************
